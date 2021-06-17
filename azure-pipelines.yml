@@ -1,0 +1,19 @@
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Azure subscription 1(1)(92a23ff9-4506-4981-af48-d0832ba7eb21)'
+    subscriptionId: '92a23ff9-4506-4981-af48-d0832ba7eb21'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'devops'
+    location: 'East US'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://raw.githubusercontent.com/SergeyTorotska/azdevops/main/vm.json'
+    deploymentMode: 'Incremental'
